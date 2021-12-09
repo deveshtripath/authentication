@@ -1,28 +1,16 @@
-import { initializeApp } from "firebase/app";
-import { getAuth } from "firebase/auth";
-import {
-  signInWithEmailAndPassword,
-  onAuthStateChanged,
-} from "firebase/auth";
 
-import React, { useState } from "react";
-import "./App.css";
 import { Button, Input } from "@material-ui/core";
 
-const firebaseConfig = {
-    apiKey: "AIzaSyAEcsa9YTrEDD8OTCpw1f7FD6HQPXpuzWQ",
-    authDomain: "authenticationg-afb52.firebaseapp.com",
-    projectId: "authenticationg-afb52",
-    storageBucket: "authenticationg-afb52.appspot.com",
-    messagingSenderId: "583915620285",
-    appId: "1:583915620285:web:fbde681a4a7160a49a34d4",
-    measurementId: "G-EXE9SGL03R"
-};
-
-const app = initializeApp(firebaseConfig);
-
-export const auth = getAuth(app);
-
+import { useState } from "react";
+import {
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+  onAuthStateChanged,
+  signOut,
+} from "firebase/auth";
+import "./App.css";
+import "./Login.css";
+import { auth } from "./firebase";
 
 function Login() {
 
@@ -51,9 +39,9 @@ function Login() {
 
 
     return (
-        <div className="app">
+        <div className="">
     <div >
-        <div>
+        <div className="log-form">
           <form className="app__login">
             
             <Input
@@ -70,7 +58,8 @@ function Login() {
             setLoginPassword(event.target.value);
           }}
             />
-            <Button onClick={login}>Login</Button>
+            <Button type="submit" className="btn" onClick={login}>Login</Button>
+            <a class="forgot" href="#">Forgot Username?</a>
             <h4> User Logged In: </h4>
       {user?.email ? <h1>You have login</h1> : <h1>You have not login</h1>}
           </form>
@@ -82,3 +71,15 @@ function Login() {
 }
 
 export default Login
+
+
+
+{/* <div class="log-form">
+  <h2>Login to your account</h2>
+  <form>
+    <input type="text" title="username" placeholder="username" />
+    <input type="password" title="username" placeholder="password" />
+    <button type="submit" class="btn">Login</button>
+    <a class="forgot" href="#">Forgot Username?</a>
+  </form>
+</div><!--end log form --> */}

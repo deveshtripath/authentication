@@ -2,10 +2,15 @@
 import './App.css';
 import Header from "./Header";
 import Login from './Login';
-import { Switch, Route } from "react-router-dom";
-import { BrowserRouter as Router} from "react-router-dom"
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom";
 import SignIn from "./SignIn";
 import Sub from "./Sub";
+import New from "./New";
 
 function App() {
   return (
@@ -14,14 +19,15 @@ function App() {
     <div>
         <Switch>
           <Route path="/signin">
+          <Header/>
           <SignIn/>
           </Route>
           <Route path="/login">
+          <Header/>
             <Login/>
           </Route>
-          <Route path="/">
+          <Route exact path="/">
           <Header/>
-              {/* <New/> */}
               <Sub/>
           </Route>
         </Switch>
